@@ -82,9 +82,27 @@ const largestPair = function(array) {
 };
 
 const removeParenth = function(str) {
-  // your code here - don't forget to return a string!
+  var splitString = str.split('');
+  var indexOfOpenParenth = splitString.indexOf('(');
+  var indexOfClosedParenth = splitString.indexOf(')');
+  splitString.splice((indexOfOpenParenth), (indexOfClosedParenth - indexOfOpenParenth + 1));
+  var parenthRemoved = splitString.join('');
+  return parenthRemoved;
 };
 
 const scoreScrabble = function(str) {
-  // your code here - don't forget to return a number!
+  // create sum variable and assign it to 0
+  var sum = 0;
+  // create score object with values assigned to each letter
+  var scrabbleScore = { a: 1, e: 1, i: 1, o: 1, u: 1, l: 1, n: 1, r: 1, s: 1, t: 1, d: 2, g: 2, b: 3, c: 3, m: 3, p: 3, f: 4, h: 4, v: 4, w: 4, y: 4, k: 5, j: 8, x: 8, q: 10, z: 10};
+  // split string into an array
+  var splitString = str.split('');
+  // iterate over the array
+  for (var i = 0; i < splitString.length; i++) {
+    var currentLetter = splitString[i];
+    // check the value of the current letter with the score object
+    sum += scrabbleScore[currentLetter];
+    // add that value to the sum
+  }
+  return sum;
 };
